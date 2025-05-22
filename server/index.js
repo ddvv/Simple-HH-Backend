@@ -1,4 +1,7 @@
 import Fastify from 'fastify'
+import fastifySession from '@fastify/session';
+import fastifyCookie from '@fastify/cookie';
+
 import {auth} from './routes/auth.js'
 import {apiRoutes} from './routes/api.js'
 
@@ -8,8 +11,15 @@ const fastify = Fastify({
     logger: true
 });
 
-fastify.register(auth, { prefix: '/auth' });
-fastify.register(apiRoutes, { prefix: '/api' });
+// Плагины для работы с сессиями и куками
+fastify.register(fastifyCookie);
+fastify.register(fastifySession, {
+    secret: process.env.SESSION_SECRET, // Замените на надежный ключ
+    cookie: {secure: false} // Для HTTPS: secure: true
+});
+
+fastify.register(auth, {prefix: '/auth'});
+fastify.register(apiRoutes, {prefix: '/api'});
 
 fastify.listen({port: PORT}, (err) => {
     if (err) throw err;
