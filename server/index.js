@@ -1,5 +1,6 @@
 import Fastify from 'fastify'
 import {auth} from './routes/auth.js'
+import {apiRoutes} from './routes/api.js'
 
 const PORT = process.env.PORT ?? 3000;
 
