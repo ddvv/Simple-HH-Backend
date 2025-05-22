@@ -1,0 +1,23 @@
+{
+  "name": "simple-hh-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "npx nodemon --env-file=.env --env-file=.development.env server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddvv/Simple-HH-Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/ddvv/Simple-HH-Backend/issues"
+  },
+  "homepage": "https://github.com/ddvv/Simple-HH-Backend#readme",
+  "description": "",
+  "dependencies": {
+    "fastify": "^5.3.3"
+  }
+}
