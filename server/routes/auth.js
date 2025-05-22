@@ -24,6 +24,10 @@ export function auth (fastify, opts, done) {
                 code,
                 grant_type: 'authorization_code',
                 redirect_uri: process.env.API_REDIRECT_URI
+            }, {
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                }
             });
 
             const { access_token, refresh_token, expires_in, token_type } = tokenResponse.data;
