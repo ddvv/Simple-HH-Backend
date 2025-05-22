@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export function auth (fastify, opts, done) {
     // 1. Перенаправление на OAuth-провайдера
     fastify.get('/login', (request, reply) => {
@@ -16,7 +18,7 @@ export function auth (fastify, opts, done) {
 
         try {
             // 3. Обмен кода на access_token
-            const tokenResponse = await axios.post(config.tokenUrl, {
+            const tokenResponse = await axios.post(process.env.API_TOKEN_URL, {
                 client_id: process.env.API_CLIENT_ID,
                 client_secret: process.env.API_CLIENT_SECRET,
                 code,
