@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function auth (fastify, opts, done) {
+export function auth(fastify, opts, done) {
     // 1. Перенаправление на OAuth-провайдера
     fastify.get('/login', (request, reply) => {
         const url = new URL('', process.env.API_AUTH_URL);
@@ -14,7 +14,7 @@ export function auth (fastify, opts, done) {
 
     // 2. Callback-обработчик (получает код)
     fastify.get('/callback', async (request, reply) => {
-        const { code } = request.query;
+        const {code} = request.query;
 
         try {
             // 3. Обмен кода на access_token
@@ -30,10 +30,10 @@ export function auth (fastify, opts, done) {
                 }
             });
 
-            const { access_token, refresh_token, expires_in, token_type } = tokenResponse.data;
+            const {access_token, refresh_token, expires_in, token_type} = tokenResponse.data;
 
             // 4. Сохраняем токен в сессии
-            request.session.access_token = access_token;
+            request.session['access_token'] = access_token;
 
             // 5. Опционально: получаем данные пользователя
             // const userInfo = await axios.get(config.userInfoUrl, {
