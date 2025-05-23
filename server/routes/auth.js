@@ -42,10 +42,10 @@ export function auth(fastify, opts, done) {
 
 
             // request.session.user = userInfo.data;
-            reply.redirect('/'); // Перенаправляем на главную
+            reply.code(200).send('OK');
         } catch (error) {
             fastify.log.error(error);
-            reply.code(500).send('OAuth failed');
+            reply.code(500).send('Auth failed');
         }
     });
 
