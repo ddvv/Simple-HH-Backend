@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "npx nodemon --env-file=.env --env-file=.development.env server"
+    "dev": "npx nodemon --env-file=.env server"
   },
   "repository": {
     "type": "git",
