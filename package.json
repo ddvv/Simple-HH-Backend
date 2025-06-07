@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npx nodemon --env-file=.env server",
     "test:e2e": "jest --config=./e2e.config.js",
-    "start": "node server"
+    "start": "fastify start -l info ./server/app.js"
   },
   "repository": {
     "type": "git",
