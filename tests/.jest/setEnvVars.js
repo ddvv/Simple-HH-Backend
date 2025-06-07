@@ -1,0 +1,8 @@
+process.env.PORT = '3333'
+process.env.SESSION_SECRET = 'sessionSecret'
+process.env.API_AUTH_URL = 'https://some-api.ru/oauth/authorize'
+process.env.API_TOKEN_URL = 'https://some-api.ru/token'
+process.env.API_URL = 'https://some-api.ru'
+process.env.API_CLIENT_ID = 'client_id'
+process.env.API_CLIENT_SECRET = 'clientsecret'
+process.env.API_REDIRECT_URI = 'https://oauth.pstmn.io/v1/callback'

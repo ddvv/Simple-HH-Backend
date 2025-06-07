@@ -1,6 +1,6 @@
-import axios from 'axios';
+const axios = require('axios');
 
-export function auth(fastify, opts, done) {
+function auth(fastify, opts, done) {
     // 1. Перенаправление на OAuth-провайдера
     fastify.get('/login', (request, reply) => {
         const url = new URL('', process.env.API_AUTH_URL);
@@ -57,3 +57,5 @@ export function auth(fastify, opts, done) {
 
     done()
 }
+
+exports.auth = auth;

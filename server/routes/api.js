@@ -1,6 +1,6 @@
-import axios from 'axios';
+const axios = require('axios');
 
-export function apiRoutes(fastify, opts) {
+function apiRoutes(fastify, opts) {
     // Middleware для проверки авторизации
     fastify.addHook('preHandler', (request, reply, done) => {
         if (!request.session.access_token) {
@@ -41,3 +41,5 @@ export function apiRoutes(fastify, opts) {
         }
     });
 }
+
+exports.apiRoutes = apiRoutes;

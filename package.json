@@ -2,9 +2,11 @@
   "name": "simple-hh-backend",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
-    "dev": "npx nodemon --env-file=.env server"
+    "dev": "npx nodemon --env-file=.env server",
+    "test:e2e": "jest --config=./e2e.config.js",
+    "start": "node server"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,10 @@
     "@fastify/cookie": "^11.0.2",
     "@fastify/session": "^11.1.0",
     "axios": "^1.9.0",
-    "fastify": "^5.3.3"
+    "fastify": "^5.3.3",
+    "supertest": "^7.1.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
