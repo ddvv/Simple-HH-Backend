@@ -5,7 +5,8 @@ const fastifyCookie = require('@fastify/cookie');
 const { auth } = require('./routes/auth.js');
 const { apiRoutes } = require('./routes/api.js');
 
-const PORT = process.env.PORT ?? 3000;
+const port = process.env.PORT ?? 3000;
+const host = process.env.HOST;
 
 const fastify = Fastify({
     logger: true
@@ -23,9 +24,8 @@ const init = () => {
     fastify.register(auth, {prefix: '/auth'});
     fastify.register(apiRoutes, {prefix: '/api'});
 
-    fastify.listen({port: PORT}, (err) => {
+    fastify.listen({port, host}, (err) => {
         if (err) throw err;
-        console.log('Server running on http://localhost:' + PORT);
     });
 }
 
