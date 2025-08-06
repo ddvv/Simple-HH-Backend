@@ -28,5 +28,5 @@ jobs:
           ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "
             cd /var/www/backend &&
             npm install &&
-            pm2 restart all || pm2 start index.js --name simplehh-backend
+            pm2 restart all || pm2 start server --name simplehh-backend
           "
