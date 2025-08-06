@@ -17,7 +17,7 @@ function buildApp() {
         cookie: {secure: false} // Для HTTPS: secure: true
     });
 
-    fastify.register(auth, {prefix: '/auth'});
+    fastify.register(auth, {prefix: '/api/auth'});
     fastify.register(apiRoutes, {prefix: '/api'});
 
     // Только для тестов: доступ к текущей сессии

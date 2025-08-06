@@ -25,21 +25,6 @@ function apiRoutes(fastify, opts) {
             reply.code(500).send({error: 'API request failed'});
         }
     });
-
-    fastify.post('*', async (request, reply) => {
-        try {
-            // Используем токен для запроса к внешнему API
-            const response = await axios.post(process.env.API_URL + request.params['*'], {
-                headers: {
-                    Authorization: `Bearer ${request.session.access_token}`,
-                    ...request.headers,
-                }
-            });
-            reply.send(response.data);
-        } catch (error) {
-            reply.code(500).send({error: 'API request failed'});
-        }
-    });
 }
 
 exports.apiRoutes = apiRoutes;
