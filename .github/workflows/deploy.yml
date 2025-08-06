@@ -17,16 +17,16 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}
 
-      - name: Copy files to server (/var/www/backend)
+      - name: Copy files to server
         run: |
           rsync -avz -e "ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }}" \
-            --exclude=node_modules --exclude=.git --exclude=.env --exclude=tests \
-            ./ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/backend
+            package.json package-lock.json server
+            ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/backend
 
-#      - name: Install dependencies & Restart app
-#        run: |
-#          ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "
-#            cd /var/www/backend &&
-#            npm install &&
-#            pm2 restart all || pm2 start index.js --name myapp
-#          "
+      - name: Install dependencies & Restart app
+        run: |
+          ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "
+            cd /var/www/backend &&
+            npm install &&
+            pm2 restart all || pm2 start index.js --name simplehh-backend
+          "
