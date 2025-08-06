@@ -20,7 +20,7 @@ jobs:
       - name: Copy files to server
         run: |
           rsync -avz -e "ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }}" \
-            package.json package-lock.json server
+            package.json package-lock.json server \
             ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/backend
 
       - name: Install dependencies & Restart app
